@@ -2,9 +2,13 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Main page</title>
+    <title>Characters</title>
 </head>
 <body>
-<h1>Main page</h1>
+{% for person in characters %}
+    <ul>
+        <li><a href="{% url 'show_person' person.name %}">{{ person.name }}</a></li>
+    </ul>
+{% endfor %}
 </body>
 </html>

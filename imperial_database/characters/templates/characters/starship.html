@@ -2,9 +2,17 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>{{ title }}</title>
+    <title>{{ starship.name }}</title>
 </head>
 <body>
-<h1>{{ title }}</h1>
+<h1>{{ starship.name }}</h1>
+<ul>
+    <li>model: {{ starship.model }}</li>
+    <li>manufacturer: {{ starship.manufacturer }}</li>
+    <li>cost_in_credits: {{ starship.cost_in_credits }}</li>
+    <li>length: {{ starship.length }}</li>
+    <li>crew: {{ starship.crew }}</li>
+    <li>passengers: {{ starship.passengers }}</li>
+</ul>
 </body>
 </html>

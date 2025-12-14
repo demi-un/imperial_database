@@ -1,21 +1,17 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
+from .models import Characters, Starships
 
 
 def index(request):
-    return render(request, 'characters/index.html')
+    characters = Characters.objects.all()
+    return render(request, 'characters/index.html', {'characters': characters})
 
 
 def show_person(request, person_name):
-    data = {
-        'title': f'Страница корабля {person_name}'
-    }
-
-    return render(request, 'characters/person.html', data)
+    person = get_object_or_404(Characters, name=person_name)
+    return render(request, 'characters/person.html', {'person': person})
 
 
 def show_starship(request, starship_name):
-    data = {
-        'title': f'Страница корабля {starship_name}'
-    }
-
-    return render(request, 'characters/starship.html', data)
+    starship = get_object_or_404(Starships, name=starship_name)
+    return render(request, 'characters/starship.html', {'starship': starship})
