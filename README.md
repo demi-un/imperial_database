@@ -8,8 +8,13 @@
 ## Установка и запуск 
 ### инструкция для macos:
 1. **Склонировать репозиторий**
+- Если есть SSH
 ```bash
 git clone git@github.com:demi-un/imperial_database.git
+```
+- Если нет SSH (через https://)
+```bash
+git clone https://github.com/demi-un/imperial_database.git
 ```
 2. **Создать и активировать виртуальное окружение**
 ```bash
