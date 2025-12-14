@@ -6,6 +6,8 @@
 </head>
 <body>
 <h1>{{ person.name }}</h1>
+
+<h3>Информация:</h3>
 <ul>
     <li>height: {{ person.height }}</li>
     <li>mass: {{ person.mass }}</li>
@@ -15,6 +17,17 @@
     <li>birth_year: {{ person.birth_year }}</li>
     <li>gender: {{ person.gender }}</li>
 </ul>
+
+<h3>Корабли</h3>
+{% if starships %}
+    <ul>
+        {% for starship in starships %}
+            <li><a href="{% url 'show_starship' starship.name %}">{{ starship.name }}</a></li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>У персонажа нет кораблей</p>
+{% endif %}
 </body>
 </html>
 

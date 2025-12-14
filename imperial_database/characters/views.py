@@ -9,7 +9,13 @@ def index(request):
 
 def show_person(request, person_name):
     person = get_object_or_404(Characters, name=person_name)
-    return render(request, 'characters/person.html', {'person': person})
+
+    context = {
+        'person': person,
+        'starships': person.starships.all()
+    }
+
+    return render(request, 'characters/person.html', context)
 
 
 def show_starship(request, starship_name):
