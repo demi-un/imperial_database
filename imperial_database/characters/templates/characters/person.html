@@ -22,7 +22,7 @@
 {% if starships %}
     <ul>
         {% for starship in starships %}
-            <li><a href="{% url 'show_starship' starship.name %}">{{ starship.name }}</a></li>
+            <li><a href="{% url 'show_starship' person.slug starship.slug %}">{{ starship.name }}</a></li>
         {% endfor %}
     </ul>
 {% else %}
@@ -32,4 +32,3 @@
 <h3><a href="{% url 'main_page' %}">Вернуться на главную страницу</a></h3>
 </body>
 </html>
-

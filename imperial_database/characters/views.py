@@ -7,8 +7,8 @@ def index(request):
     return render(request, 'characters/index.html', {'characters': characters})
 
 
-def show_person(request, person_name):
-    person = get_object_or_404(Characters, name=person_name)
+def show_person(request, person_slug):
+    person = get_object_or_404(Characters, slug=person_slug)
 
     context = {
         'person': person,
@@ -18,6 +18,13 @@ def show_person(request, person_name):
     return render(request, 'characters/person.html', context)
 
 
-def show_starship(request, starship_name):
-    starship = get_object_or_404(Starships, name=starship_name)
-    return render(request, 'characters/starship.html', {'starship': starship})
+def show_starship(request, person_slug, starship_slug):
+    person = get_object_or_404(Characters, slug=person_slug)
+    starship = get_object_or_404(person.starships, slug=starship_slug)
+
+    context = {
+        "person": person,
+        "starship": starship,
+    }
+
+    return render(request, 'characters/starship.html', context)

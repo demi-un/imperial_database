@@ -1,10 +1,14 @@
 from django.db import models
+from django.utils.text import slugify
 
 
 class Characters(models.Model):
     objects = models.Manager()  # не обязательная строка
 
     name = models.CharField(max_length=100, unique=True, db_index=True)
+
+    slug = models.SlugField(max_length=100, unique=True, blank=True)
+
     height = models.CharField(max_length=10, default='не известно')
     mass = models.CharField(max_length=10, default='не известно')
     hair_color = models.CharField(max_length=50, default='не известно')
@@ -19,11 +23,19 @@ class Characters(models.Model):
     def __str__(self):
         return self.name
 
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = slugify(self.name)
+        super().save(*args, **kwargs)
+
 
 class Starships(models.Model):
     objects = models.Manager()  # не обязательная строка
 
     name = models.CharField(max_length=100, unique=True, db_index=True)
+
+    slug = models.SlugField(max_length=100, unique=True, blank=True)
+
     model = models.CharField(max_length=100, default='не известно')
     manufacturer = models.CharField(max_length=150, default='не известно')
     cost_in_credits = models.CharField(max_length=20, default='не известно')
@@ -33,3 +45,8 @@ class Starships(models.Model):
 
     def __str__(self):
         return self.name
+
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = slugify(self.name)
+        super().save(*args, **kwargs)

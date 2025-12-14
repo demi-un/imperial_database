@@ -15,6 +15,7 @@
     <li>passengers: {{ starship.passengers }}</li>
 </ul>
 
+<h3><a href="{% url 'show_person' person.slug %}">Вернуться обратно к персонажу</a></h3>
 <h3><a href="{% url 'main_page' %}">Вернуться на главную страницу</a></h3>
 </body>
 </html>
